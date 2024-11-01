@@ -14,24 +14,52 @@ import ShoppingViewCheckout from "./Pages/Shopping-View/shopping-view-checkout";
 import ShoppingViewListing from "./Pages/Shopping-View/shopping-view-listing";
 import NotFound from "./Pages/Not-Found/Not-Found";
 import ShopLayout from "./components/Layouts/Shopping-View/Shop-Layout";
-
+import AuthCommon from "./components/Common/AuthCommon";
+// ! this is a ver critical comment
+// * This is a highlighted comment
+// TODO: This is a TODO Comment
+// ? This is a question comment
+// This is a normal comment
 function App() {
+  let isAuthenticated = false;
+  let user = null;
   return (
     <>
       <Routes>
-        <Route path="auth" element={<AuthLayout />}>
+        <Route
+          path="auth"
+          element={
+            <AuthCommon>
+              <AuthLayout />
+            </AuthCommon>
+          }
+        >
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
 
-        <Route path="admin" element={<AdminLayout />}>
+        <Route
+          path="admin"
+          element={
+            <AuthCommon>
+              <AdminLayout />
+            </AuthCommon>
+          }
+        >
           <Route path="dashboard" element={<AdminViewDashboard />} />
           <Route path="features" element={<AdminViewFeatures />} />
           <Route path="orders" element={<AdminViewOrders />} />
           <Route path="products" element={<AdminViewProducts />} />
         </Route>
 
-        <Route path="shop" element={<ShopLayout />}>
+        <Route
+          path="shop"
+          element={
+            <AuthCommon>
+              <ShopLayout />
+            </AuthCommon>
+          }
+        >
           <Route path="home" element={<ShoppingViewHome />} />
           <Route path="account" element={<ShoppingViewAccount />} />
           <Route path="checkout" element={<ShoppingViewCheckout />} />
